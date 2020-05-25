@@ -1,6 +1,8 @@
 var express = require('express')
 var app = express()
+var bodyparser = require('body-parser')
 
+app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.static(__dirname + '/public'))
 
 app.use(function (req, res, next) {
@@ -30,6 +32,11 @@ app.get('/now', function (req, res, next) {
 // Get Route parameter input from the client
 app.get('/:word/echo', function (req, res) {
   res.json({ echo: req.params.word })
+})
+
+// Get Query parameter input from the client
+app.get('/name', function (req, res) {
+  res.json({ name: req.query.first + ' ' + req.query.last })
 })
 
 // Get Query parameter input from the client
