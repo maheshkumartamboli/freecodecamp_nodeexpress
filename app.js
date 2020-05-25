@@ -32,6 +32,11 @@ app.get('/:word/echo', function (req, res) {
   res.json({ echo: req.params.word })
 })
 
+// Get Query parameter input from the client
+app.get('/name', function (req, res) {
+  res.json({ name: req.query.first + ' ' + req.query.last })
+})
+
 app.get('/', function (req, res) {
   res.send('Hello Express')
 })
