@@ -27,6 +27,11 @@ app.get('/now', function (req, res, next) {
   res.json({ time: req.time })
 })
 
+// Get Route parameter input from the client
+app.get('/:word/echo', function (req, res) {
+  res.json({ echo: req.params.word })
+})
+
 app.get('/', function (req, res) {
   res.send('Hello Express')
 })
